@@ -1,0 +1,57 @@
+<section class="section-header" id="section-header">
+    <link rel="stylesheet" href="{{ 'header.css' | asset_url }}">
+
+  <span>Atendimento: </span>
+  {{ company.phone.formated_number }}
+
+  <div class="header-topbar">
+    <div class="container flex -between">
+      <div class="header-topbar_contact flex">
+        <a href="/">Home</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="container flex-between">
+    <div class="logo">
+      {% if company.logo_url %}
+      <a href="/" class="inline-block">
+        <img src="{{ company.logo_url }}" alt="{{ company.razao_social }}" width="auto" height="auto" />
+      </a>
+      {% endif %}
+    </div>
+
+    <div class="categories">
+      <ul class="inline">
+        <li class="dropdown-holder category-dropdown-holder">
+          <span class="padding block">
+            <svg width="15" height="11" fill="none" viewBox="0 0 15 11">
+              <path d="M1.51 9.927c0 .367-.311.688-.72.688-.408 0-.72-.321-.72-.688 0-.39.312-.688.72-.688.409 0 .72.298.72.688zm11.9-.688H4.185c-.408 0-.72.298-.72.688 0 .367.312.688.72.688h9.225c.408 0 .72-.321.72-.688 0-.39-.312-.688-.72-.688zM.79 4.655c-.408 0-.72.298-.72.688 0 .366.312.687.72.687.409 0 .72-.32.72-.687 0-.39-.311-.688-.72-.688zm12.62 0H4.185c-.408 0-.72.298-.72.688 0 .366.312.687.72.687h9.225c.408 0 .72-.32.72-.687 0-.39-.312-.688-.72-.688zM.79.07C.383.07.07.368.07.758c0 .367.312.688.72.688.409 0 .72-.321.72-.688C1.51.368 1.2.07.79.07zm3.395 1.376h9.225c.408 0 .72-.321.72-.688 0-.39-.312-.688-.72-.688H4.185c-.408 0-.72.298-.72.688 0 .367.312.688.72.688z" />
+              <path clip-rule="evenodd" d="M0 .758C0 .326.347 0 .79 0c.444 0 .79.326.79.758 0 .407-.344.758-.79.758-.445 0-.79-.35-.79-.758zM.79.141C.418.14.14.41.14.758c0 .326.28.617.65.617.371 0 .65-.29.65-.617C1.44.41 1.163.141.79.141zm2.605.617c0-.432.346-.758.79-.758h9.225c.443 0 .79.326.79.758 0 .407-.345.758-.79.758H4.185c-.445 0-.79-.35-.79-.758zm.79-.617c-.372 0-.65.27-.65.617 0 .326.28.617.65.617.371 0 .65-.291.65-.617 0-.348-.278-.617-.65-.617zm3.395.617c0-.432.346-.758.79-.758h9.225c.443 0 .79.326.79.758 0 .407-.345.758-.79.758H7.58c-.445 0-.79-.35-.79-.758zm.79-.617c-.372 0-.65.27-.65.617 0 .326.28.617.65.617.371 0 .65-.291.65-.617 0-.348-.278-.617-.65-.617zm3.395.617c0-.432.346-.758.79-.758h2.89c.443 0 .79.326.79.758 0 .407-.345.758-.79.758h-2.89c-.445 0-.79-.35-.79-.758zm.79-.617c-.372 0-.65.27-.65.617 0 .326.28.617.65.617.371 0 .65-.291.65-.617 0-.348-.278-.617-.65-.617z" />
+            </svg>
+          </span>
+        </li>
+
+        {% for category in featured_categories %}
+          <li>
+            <a href="/{{ category.slug }}">{{ category.name }}</a>
+
+            {% if category.children.size > 0 %}
+              <ul class="subcategories">
+                {% for subcategory in category.children %}
+                  <li>
+                    <a href="/{{ category.slug }}/{{ subcategory.slug }}">{{ subcategory.name }}</a>
+
+
+                  </li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          </li>
+        {% endfor %}
+
+
+      </ul>
+    </div>
+  </div>
+</section>
