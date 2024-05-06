@@ -21,9 +21,10 @@ class ProductsController
     public function show(ServerRequestInterface $request, ResponseInterface $response, array $args): ResponseInterface
     {
         $baseTemplateService = new BaseTemplateService();
-        $baseTemplateService->categories();
+        $categories = $baseTemplateService->categories();
 
         $html = $this->twig->render('index.twig', [
+            'categories' => $categories,
             'settings' => [
                 'fonts_texts_size' => '15px',
                 'fonts_titles_family' => 'Inter'

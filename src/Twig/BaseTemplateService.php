@@ -21,6 +21,6 @@ class BaseTemplateService
 
     public function categories()
     {
-        $categories = $this->whoIs['data']['categories'];
+       return $this->whoIs['data']['categories'];
     }
 }
